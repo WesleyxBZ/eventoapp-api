@@ -17,7 +17,7 @@ public class ConvidadoServiceImpl implements ConvidadoService {
     private ConvidadoRepository convidadoRepository;
 
     @Override
-    public Convidado save(Convidado convidado) {
+    public Convidado createOrUpdate(Convidado convidado) {
         return convidadoRepository.save(convidado);
     }
 

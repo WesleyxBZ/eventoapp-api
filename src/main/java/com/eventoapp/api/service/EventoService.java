@@ -7,12 +7,14 @@ import java.util.Optional;
 
 public interface EventoService {
 
-    Evento save(Evento evento);
-
-    List<Evento> findAll();
+    Evento createOrUpdate(Evento evento);
 
     Optional<Evento> findById(Long id);
 
     void deleteById(Long id);
+
+    List<Evento> findAllByUsuarioId(Long id);
+
+    Evento findByIdAndUsuarioId(Long idEvento, Long idUsuario);
 
 }

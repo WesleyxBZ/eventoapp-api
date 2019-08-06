@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/eventoapp/convidado")
+@RequestMapping("api/convidado")
 @CrossOrigin(origins = "*")
 public class ConvidadoController {
 
@@ -19,14 +19,14 @@ public class ConvidadoController {
     private ConvidadoService convidadoService;
 
     @PostMapping
-    public Convidado save(@RequestBody Convidado convidado, BindingResult result) {
+    public Convidado createOrUpdate(@RequestBody Convidado convidado, BindingResult result) {
 
         if (result.hasErrors()) {
             System.out.println(result);
             return null;
         }
 
-        return convidadoService.save(convidado);
+        return convidadoService.createOrUpdate(convidado);
     }
 
     @DeleteMapping(value = "/{id}")

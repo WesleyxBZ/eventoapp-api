@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ConvidadoService {
 
-    Convidado save(Convidado convidado);
+    Convidado createOrUpdate(Convidado convidado);
 
     void deleteById(Long id);
 

@@ -21,7 +21,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.eventoapp.api"))
-                .paths(PathSelectors.regex("/eventoapp/.*"))
+                .paths(PathSelectors.regex("/api.*"))
                 .build()
                 .apiInfo(metaInfo());
     }

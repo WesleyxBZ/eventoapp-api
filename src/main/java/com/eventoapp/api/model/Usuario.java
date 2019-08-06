@@ -1,6 +1,7 @@
 package com.eventoapp.api.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -18,7 +19,10 @@ public class Usuario implements Serializable {
     @Column(unique = true, nullable = false)
     private String email;
 
+    @Size(min = 6)
+    @Column(nullable = false)
     private String senha;
+
 
     public Long getId() {
         return id;

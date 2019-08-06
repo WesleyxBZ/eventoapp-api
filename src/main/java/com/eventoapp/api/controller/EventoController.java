@@ -9,10 +9,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/eventoapp/evento")
+@RequestMapping("api/evento")
 @CrossOrigin(origins = "*")
 @Api
 public class EventoController {
@@ -24,13 +23,13 @@ public class EventoController {
     private ConvidadoService convidadoService;
 
     @PostMapping
-    public Evento save(@RequestBody Evento evento, BindingResult result) {
+    public Evento createOrUpdate(@RequestBody Evento evento, BindingResult result) {
 
         if (result.hasErrors()) {
             return null;
         }
 
-        return eventoService.save(evento);
+        return eventoService.createOrUpdate(evento);
     }
 
     @DeleteMapping("/{id}")
@@ -39,14 +38,14 @@ public class EventoController {
         eventoService.deleteById(id);
     }
 
-    @GetMapping
-    public List<Evento> findAll() {
-        return eventoService.findAll();
+    @GetMapping("/{id}")
+    public List<Evento> findAllByUsuarioId(@PathVariable("id") Long id) {
+        return eventoService.findAllByUsuarioId(id);
     }
 
-    @GetMapping("/{id}")
-    public Optional<Evento> findById(@PathVariable("id") Long id) {
-        return eventoService.findById(id);
+    @GetMapping("/{id_evento}/{id_usuario}")
+    public Evento findByIdAndUsuarioId(@PathVariable("id_evento") Long idEvento, @PathVariable("id_usuario") Long idUsuario) {
+        return eventoService.findByIdAndUsuarioId(idEvento, idUsuario);
     }
 
 }

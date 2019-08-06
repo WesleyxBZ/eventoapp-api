@@ -17,14 +17,8 @@ public class EventoServiceImpl implements EventoService {
     private EventoRepository eventoRepository;
 
     @Override
-    public Evento save(Evento evento) {
+    public Evento createOrUpdate(Evento evento) {
         return eventoRepository.save(evento);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public List<Evento> findAll() {
-        return eventoRepository.findAll();
     }
 
     @Transactional(readOnly = true)
@@ -36,6 +30,16 @@ public class EventoServiceImpl implements EventoService {
     @Override
     public void deleteById(Long id) {
         eventoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Evento> findAllByUsuarioId(Long id) {
+        return eventoRepository.findAllByUsuarioId(id);
+    }
+
+    @Override
+    public Evento findByIdAndUsuarioId(Long idEvento, Long idUsuario) {
+        return eventoRepository.findByIdAndUsuarioId(idEvento, idUsuario);
     }
 
 }

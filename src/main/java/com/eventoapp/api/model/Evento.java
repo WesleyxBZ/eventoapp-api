@@ -1,5 +1,6 @@
 package com.eventoapp.api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -41,6 +42,10 @@ public class Evento implements Serializable {
     @Column(nullable = false, columnDefinition = "TIME")
     private LocalTime horario;
 
+    @ManyToOne
+    @JsonBackReference
+    private Usuario usuario;
+
     public Long getId() {
         return id;
     }
@@ -79,6 +84,14 @@ public class Evento implements Serializable {
 
     public void setHorario(LocalTime horario) {
         this.horario = horario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

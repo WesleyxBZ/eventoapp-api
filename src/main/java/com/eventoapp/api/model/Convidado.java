@@ -22,7 +22,6 @@ public class Convidado implements Serializable {
     @JsonBackReference
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "evento_id")
     private Evento evento;
 
     @NotNull
